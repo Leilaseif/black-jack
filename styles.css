@@ -1,6 +1,9 @@
-bode{
+body{
     text-align: center;
     background-color: green;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    
+
+}
+h1{
+    text-align: center;
 }
