@@ -46,7 +46,7 @@ function renderCard(){
     for (let i=0; i<cards.length; i++){
     cardEl.textContent+=  cards[i]+" "}
 
-    sumEL.innerHTML=sum
+    sumEL.innerHTML= "sum: "+sum
 
      if (sum<=20){
         messageEl.innerHTML=" draw another card?"
