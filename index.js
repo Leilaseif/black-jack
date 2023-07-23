@@ -1,25 +1,73 @@
-let firstCard = 11;
-let secondCard= 1;
-let sum = firstCard+secondCard;
-let isAlive= true;
-let hasBlachJack= false;
-let message=""
 
 
-let messageEl=document.getElementById("message-el")
-let sumEl=document.getElementById("sum-el")
-function start(){
-    sumEl.innerHTML="sum:"+ sum
-    if (sum<=20){
-        message= "do you need more card?"
-       
-    } else if (sum===21){
-        message="you got it!blackjack" 
-        hasBlachJack=false
+let cards=[]
+let hasBlackJack=false;
+let isAlive=false;
+
+function randomGameCard(){
+    let randomNumber=Math.floor(Math.random()*13)+1
+    if (randomNumber===1){
+        return 11
+
+    }else if(randomNumber>10){
+       return 10
+
+    }else{
+        return randomNumber
     }
-    else {
-        message="oops, you loose!!"
-        isAlive=false;
+}
+
+
+let player ={
+    Name:"leila",
+    cash: 200 
+}
+let messageEl=document.getElementById("messageel")
+let cardEl=document.getElementById("cardel")
+let sumEL=document.getElementById("sumel")
+
+ 
+
+let sum = 0
+function startGame(){
+    
+    isAlive=true
+    let firstCard=randomGameCard()
+    let secondCard=randomGameCard()
+    cards=[firstCard,secondCard]
+    sum = firstCard+secondCard
+   
+    renderCard()
+   
+    
+}
+function renderCard(){
+   cardEl.innerHTML="cards: "
+    for (let i=0; i<cards.length; i++){
+    cardEl.textContent+=  cards[i]+" "}
+
+    sumEL.innerHTML=sum
+
+     if (sum<=20){
+        messageEl.innerHTML=" draw another card?"
+        
+     }else if (sum==21){
+     messageEl.innerHTML= "you Win!!!"
+     hasBlackJack=true
+     }else{
+        messageEl.innerHTML= "oops...you loose!!!"
+        // isAlive=false
+        hasBlackJack=true
+     }
     }
-    messageEl.innerHTML=message
+    
+function newCard(){
+    if ( isAlive===true && hasBlackJack===false){
+    let newOne=randomGameCard();
+    sum +=newOne
+   
+    cards.push(newOne)
+    renderCard()
+    
+    }
 }
