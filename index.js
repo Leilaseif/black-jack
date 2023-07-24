@@ -1,8 +1,17 @@
 
-
+let sum = 0
 let cards=[]
 let hasBlackJack=false;
 let isAlive=false;
+
+let player ={
+    Name:"leila",
+    cash: 200 
+}
+let messageEl=document.getElementById("messageel")
+let cardEl=document.getElementById("cardel")
+let sumEL=document.getElementById("sumel")
+
 
 function randomGameCard(){
     let randomNumber=Math.floor(Math.random()*13)+1
@@ -17,30 +26,15 @@ function randomGameCard(){
     }
 }
 
-
-let player ={
-    Name:"leila",
-    cash: 200 
-}
-let messageEl=document.getElementById("messageel")
-let cardEl=document.getElementById("cardel")
-let sumEL=document.getElementById("sumel")
-
- 
-
-let sum = 0
 function startGame(){
-    
     isAlive=true
     let firstCard=randomGameCard()
     let secondCard=randomGameCard()
     cards=[firstCard,secondCard]
     sum = firstCard+secondCard
-   
     renderCard()
-   
-    
 }
+
 function renderCard(){
    cardEl.innerHTML="cards: "
     for (let i=0; i<cards.length; i++){
@@ -51,13 +45,12 @@ function renderCard(){
      if (sum<=20){
         messageEl.innerHTML=" draw another card?"
         
-     }else if (sum==21){
+     }else if (sum===21){
      messageEl.innerHTML= "you Win!!!"
      hasBlackJack=true
      }else{
         messageEl.innerHTML= "oops...you loose!!!"
-        // isAlive=false
-        hasBlackJack=true
+        isAlive=false
      }
     }
     
